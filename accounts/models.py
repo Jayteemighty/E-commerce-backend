@@ -1,8 +1,10 @@
-from django.db import models
-from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.contrib.auth.models import AbstractUser
-from .managers import UserManager
+from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import Group, Permission
+from django.contrib.auth.validators import UnicodeUsernameValidator
+from .managers import UserManager
+
 
 class User(AbstractUser):
     username = models.CharField(
@@ -36,7 +38,6 @@ class User(AbstractUser):
         _("last name"), max_length=100, null=False, blank=False
     )
 
-
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = (
         "username",
@@ -45,3 +46,17 @@ class User(AbstractUser):
     )
 
     objects = UserManager()
+
+    # Add related_name attributes to avoid clashes
+    groups = models.ManyToManyField(
+        Group,
+        verbose_name=_('groups'),
+        blank=True,
+        related_name='custom_user_groups'  # Example related name
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        verbose_name=_('user permissions'),
+        blank=True,
+        related_name='custom_user_permissions'  # Example related name
+    )
