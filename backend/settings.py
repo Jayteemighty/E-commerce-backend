@@ -91,6 +91,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+E = config("ENVIRONMENT", "LOCAL")
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -127,6 +129,7 @@ AUTHENTICATION_BACKENDS = (
     "accounts.backends.EmailBackend",
 )
 
+AUTH_USER_MODEL = "accounts.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
