@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     'product',
     'accounts',
     'order',
+    
+    'drf_yasg',
+    'drf_spectacular',
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -157,6 +160,12 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema"}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "E commerce backend",
+    }
 
 # Celery settings
 #CELERY_BROKER_URL = config("CELERY_BROKER_URL")
