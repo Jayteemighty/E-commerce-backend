@@ -39,6 +39,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = get_user_model()
+        ref_name = 'UserAccount'
         fields = (
             "id",
             "username",
