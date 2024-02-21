@@ -103,18 +103,25 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 E = config("ENVIRONMENT", "LOCAL")
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": config("DB_NAME"),
-        "USER": config("DB_USER"),
-        "PASSWORD": config("DB_PASSWORD"),
-        "HOST": config("DB_HOST"),
-        "PORT": config("DB_PORT"),
-        "CONN_MAX_AGE": 500,
-    }
-}
+#DATABASES = {
+#    "default": dj_database_url.config(
+#        "ENGINE": "django.db.backends.postgresql_psycopg2",
+#        "NAME": config("DB_NAME"),
+#        "USER": config("DB_USER"),
+#        "PASSWORD": config("DB_PASSWORD"),
+#        "HOST": config("DB_HOST"),
+#        "PORT": config("DB_PORT"),
+#        "CONN_MAX_AGE": 600,
+#    )
+#}
 
+DATABASES = {
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://postgres:postgres@localhost:5432',
+        conn_max_age=600
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
