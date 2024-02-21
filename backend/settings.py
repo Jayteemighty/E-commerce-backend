@@ -14,6 +14,14 @@ from pathlib import Path
 import os
 from decouple import config
 
+import psycopg2
+
+# Connection string for PostgreSQL
+#connection_string = "postgres://jaytee:uShosXkb3hisLVJjDwlTv2FwcGrbz7KT@dpg-cnaur4mv3ddc73dbgk30-a.oregon-postgres.render.com/ecommerce_s43e"
+
+# Connect to the database using the connection string
+#connection = psycopg2.connect(connection_string)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -109,6 +117,7 @@ DATABASES = {
         "HOST": config("DB_HOST"),
         "PORT": config("DB_PORT"),
         "CONN_MAX_AGE": 600,
+        #postgres://jaytee:uShosXkb3hisLVJjDwlTv2FwcGrbz7KT@dpg-cnaur4mv3ddc73dbgk30-a.oregon-postgres.render.com/ecommerce_s43e
     }
 }
 
