@@ -40,7 +40,9 @@ STRIPE_SECRET_KEY = 'sk_test_51HIHiuKBJV2qeWbD4IBpAODack7r7r9LJ0Y65zSFx7jUUwgy2n
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '9e7c-102-88-36-211.ngrok-free.app',
+    #'9e7c-102-88-36-211.ngrok-free.app',
+    'e-commerce-backend-fe1r.onrender.com',
+    '*',
 ]
 
 
@@ -68,7 +70,8 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
+    #"http://localhost:8080",
+    '*',
 ]
 
 MIDDLEWARE = [
