@@ -32,6 +32,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '9e7c-102-88-36-211.ngrok-free.app',
+    'e-commerce-backend-pink.vercel.app/',
 ]
 
 
