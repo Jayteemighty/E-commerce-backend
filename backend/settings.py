@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from decouple import config
 
-from whitenoise.storage import CompressedManifestStaticFilesStorage
+#from whitenoise.storage import CompressedManifestStaticFilesStorage
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-E = config("ENVIRONMENT", "LOCAL")
+#E = config("ENVIRONMENT", "LOCAL")
 
 #DATABASES = {
 #    "default": dj_database_url.config(
@@ -172,7 +172,7 @@ STATIC_URL = 'static/'
     #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     
     #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
