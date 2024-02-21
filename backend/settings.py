@@ -30,7 +30,9 @@ STRIPE_SECRET_KEY = 'sk_test_51HIHiuKBJV2qeWbD4IBpAODack7r7r9LJ0Y65zSFx7jUUwgy2n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '9e7c-102-88-36-211.ngrok-free.app',
+]
 
 
 # Application definition
