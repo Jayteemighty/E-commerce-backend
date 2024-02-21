@@ -9,12 +9,10 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-import dj_database_url
+
 from pathlib import Path
 import os
 from decouple import config
-
-#from whitenoise.storage import CompressedManifestStaticFilesStorage
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -35,7 +33,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '9e7c-102-88-36-211.ngrok-free.app',
-    #'e-commerce-backend-pink.vercel.app/',
 ]
 
 
@@ -47,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    #'django.contrib.staticfiles',
+    'django.contrib.staticfiles',
     
     'rest_framework',
     'corsheaders',
@@ -75,9 +72,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    
-    #'django.middleware.security.SecurityMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -106,24 +100,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 #E = config("ENVIRONMENT", "LOCAL")
 
-#DATABASES = {
-#    "default": dj_database_url.config(
-#        "ENGINE": "django.db.backends.postgresql_psycopg2",
-#        "NAME": config("DB_NAME"),
-#        "USER": config("DB_USER"),
-#        "PASSWORD": config("DB_PASSWORD"),
-#        "HOST": config("DB_HOST"),
-#        "PORT": config("DB_PORT"),
-#        "CONN_MAX_AGE": 600,
-#    )
-#}
-
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://postgres:postgres@localhost:5432',
-        conn_max_age=600
-    )
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": config("DB_NAME"),
+        "USER": config("DB_USER"),
+        "PASSWORD": config("DB_PASSWORD"),
+        "HOST": config("DB_HOST"),
+        "PORT": config("DB_PORT"),
+        "CONN_MAX_AGE": 600,
+    }
 }
 
 # Password validation
@@ -166,12 +152,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-#STATIC_URL = 'static/'
-#if not DEBUG:
-    
-    #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    
-    #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_URL = 'static/'
+
 #STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
