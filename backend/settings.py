@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     
     'drf_yasg',
     'drf_spectacular',
+    'rest_framework_simplejwt',
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -121,7 +122,6 @@ DATABASES = {
         "HOST": config("DB_HOST"),
         "PORT": config("DB_PORT"),
         "CONN_MAX_AGE": 600,
-        #postgres://jaytee:uShosXkb3hisLVJjDwlTv2FwcGrbz7KT@dpg-cnaur4mv3ddc73dbgk30-a.oregon-postgres.render.com/ecommerce_s43e
     }
 }
 
@@ -177,7 +177,9 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {"DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema", 'DEFAULT_AUTHENTICATION_CLASSES': (
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema", 
+    'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         # Other authentication classes...
     ),}
