@@ -3,7 +3,6 @@ from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from .serializers import UserSerializer
-from accounts.serializers import UserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.authtoken.models import Token
 
@@ -23,6 +22,10 @@ class SignupView(generics.CreateAPIView):
         
         user = serializer.save()
 
-        token, created = Token.objects.get_or_create(user=user)
+        #token, created = Token.objects.get_or_create(user=user)
 
-        return Response({'user': serializer.data, 'token': token.key}, status=status.HTTP_201_CREATED)
+        #return Response({'user': serializer.data, 'token': token.key}, status=status.HTTP_201_CREATED)
+    
+        refresh = RefreshToken.for_user(user)
+
+        return Response({'user': serializer.data, 'refresh': str(refresh), 'access': str(refresh.access_token)}, status=status.HTTP_201_CREATED)
