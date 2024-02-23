@@ -13,7 +13,6 @@ class SignupView(generics.CreateAPIView):
     queryset = get_user_model().objects.all()
 
     def perform_create(self, serializer):
-        # Extract the password from the serializer data
         password = serializer.validated_data.get('password')
         
         # Hash the password using Django's make_password function
@@ -22,10 +21,8 @@ class SignupView(generics.CreateAPIView):
         # Set the hashed password back to the serializer data
         serializer.validated_data['password'] = hashed_password
         
-        # Save the user object
         user = serializer.save()
 
         token, created = Token.objects.get_or_create(user=user)
 
-        # Return the response with user data and token
         return Response({'user': serializer.data, 'token': token.key}, status=status.HTTP_201_CREATED)
