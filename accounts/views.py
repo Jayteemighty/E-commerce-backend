@@ -25,7 +25,3 @@ class SignupView(generics.CreateAPIView):
         token, created = Token.objects.get_or_create(user=user)
 
         return Response({'user': serializer.data, 'token': token.key}, status=status.HTTP_201_CREATED)
-    
-        #refresh = RefreshToken.for_user(user)
-
-        #return Response({'user': serializer.data, 'refresh': str(refresh), 'access': str(refresh.access_token)}, status=status.HTTP_201_CREATED)
