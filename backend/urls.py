@@ -18,11 +18,11 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1', include('djoser.urls')),
-    path('api/v1', include('djoser.urls.authtoken')),
-    path('api/v1', include('product.urls')),
-    path('api/v1', include('order.urls')),
-    path('api/v1', include('accounts.urls')),
+    path('api/v1/', include('djoser.urls')),
+    path('api/v1/', include('djoser.urls.authtoken')),
+    path('api/v1/', include('product.urls')),
+    path('api/v1/', include('order.urls')),
+    path('api/v1/', include('accounts.urls')),
     
     path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
