@@ -18,14 +18,14 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('djoser.urls')),
-    path('api/', include('djoser.urls.authtoken')),
-    path('api/', include('product.urls')),
-    path('api/', include('order.urls')),
-    path('api/', include('accounts.urls')),
+    path('api/v1', include('djoser.urls')),
+    path('api/v1', include('djoser.urls.authtoken')),
+    path('api/v1', include('product.urls')),
+    path('api/v1', include('order.urls')),
+    path('api/v1', include('accounts.urls')),
     
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/v1/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/v1/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     path('schema/docs/', SpectacularSwaggerView.as_view(url_name='schema'))
